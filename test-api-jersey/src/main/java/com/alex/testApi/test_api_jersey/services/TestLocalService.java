@@ -11,8 +11,8 @@ import org.hibernate.sql.Template;
 import com.alex.testApi.test_api_jersey.database.DAOOperations;
 import com.alex.testApi.test_api_jersey.database.DB;
 import com.alex.testApi.test_api_jersey.database.TestDAO;
-import com.alex.testApi.test_api_jersey.local.QuestionLocal;
-import com.alex.testApi.test_api_jersey.local.TestLocal;
+import com.alex.testApi.test_api_jersey.localmodel.QuestionLocal;
+import com.alex.testApi.test_api_jersey.localmodel.TestLocal;
 import com.alex.testApi.test_api_jersey.model.Answer;
 import com.alex.testApi.test_api_jersey.model.Question;
 import com.alex.testApi.test_api_jersey.model.Test;
@@ -49,6 +49,8 @@ public class TestLocalService implements BasicService<TestLocal> {
 			localToRealId.put(i+1, testTemp.getId());
 			testLocalTemp = new TestLocal(testTemp.getNumberOfQuestions());
 			testLocalTemp.setLocalId(i+1);
+			testLocalTemp.setTestName(testTemp.getTestName());
+			testLocalTemp.setTestCreator(testTemp.getCreatorName());
 			allTestLocal.add(testLocalTemp);
 			
 		}
@@ -81,7 +83,13 @@ public class TestLocalService implements BasicService<TestLocal> {
 			tempQuestion = testQuestions.get(i);	
 			tempQuestionLocal.setLocalId(i+1);
 			tempQuestionLocal.convertQestionToQuestionLocal(tempQuestion);
+
+			
+			if(tempQuestion.getNumberOfCorrectAnswers()==1)  tempQuestionLocal.setQuestionType(1);
+			if(tempQuestion.getNumberOfCorrectAnswers()>1)  tempQuestionLocal.setQuestionType(2);
+			
 			testQuestionForClient.add(tempQuestionLocal);
+			
 			
 			
 		}

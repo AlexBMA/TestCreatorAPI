@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
 import com.alex.testApi.test_api_jersey.database.DB;
-import com.alex.testApi.test_api_jersey.local.TestLocal;
+import com.alex.testApi.test_api_jersey.localmodel.TestLocal;
 import com.alex.testApi.test_api_jersey.services.BasicService;
 import com.alex.testApi.test_api_jersey.services.TestLocalService;
 

@@ -1,4 +1,4 @@
-package com.alex.testApi.test_api_jersey.local;
+package com.alex.testApi.test_api_jersey.localmodel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +76,14 @@ public class QuestionLocal {
 
 	public void setAnswers(List<String> answers) {
 		this.answers = answers;
+	}
+
+	public int getQuestionType() {
+		return questionType;
+	}
+
+	public void setQuestionType(int questionType) {
+		this.questionType = questionType;
 	}
 	
 	
