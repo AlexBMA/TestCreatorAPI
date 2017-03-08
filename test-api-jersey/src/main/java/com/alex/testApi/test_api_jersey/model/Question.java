@@ -76,7 +76,7 @@ public class Question {
 		this.numberOfAnswers = numberOfAnswers;
 	}
 
-	public List<Answer> getListAnswersi() {
+	public List<Answer> getListAnswers() {
 		return listAnswersi;
 	}
 

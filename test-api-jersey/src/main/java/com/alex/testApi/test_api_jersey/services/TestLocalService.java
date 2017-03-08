@@ -114,7 +114,11 @@ public class TestLocalService implements BasicService<TestLocal> {
 			
 	}
 	
-	
+	public Map<Integer,Integer> getIdMap()
+	{
+		
+		return localToRealId;
+	}
 
 	@Override
 	public List<TestLocal> getSimilarItems(SessionFactory factory, int idSimilar) {

@@ -36,7 +36,7 @@ public class QuestionLocal {
 	{
 		this.questionText = q.getQuestionText();
 		List<String> answerText = new ArrayList<>();
-		List<Answer> listAnswer = q.getListAnswersi();
+		List<Answer> listAnswer = q.getListAnswers();
 		for(Answer a:listAnswer)
 		{
 			answerText.add(a.getAnswerText());

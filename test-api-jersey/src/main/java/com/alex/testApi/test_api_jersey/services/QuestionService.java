@@ -46,7 +46,7 @@ public class QuestionService implements BasicService<Question> {
 		
 		Question item = questionOpearions.getARow(factory, id);
 		
-		List<Answer> listAnswer = item.getListAnswersi();
+		List<Answer> listAnswer = item.getListAnswers();
 		BasicService<Answer>answerService = new AnswerService();
 		
 		for(Answer a:listAnswer)
@@ -62,7 +62,7 @@ public class QuestionService implements BasicService<Question> {
 		
 		DAOOperations<Question> questionOpearions = new QuestionDAO();
 		
-		List<Answer> listAnswer = item.getListAnswersi();
+		List<Answer> listAnswer = item.getListAnswers();
 		BasicService<Answer>answerService = new AnswerService();
 		
 		for(Answer a: listAnswer)
