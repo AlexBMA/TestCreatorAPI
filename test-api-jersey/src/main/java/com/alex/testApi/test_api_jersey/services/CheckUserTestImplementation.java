@@ -1,6 +1,5 @@
 package com.alex.testApi.test_api_jersey.services;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +18,6 @@ public class CheckUserTestImplementation implements CheckUserTest {
 	@Override
 	public TestReport checkUserTest(SimpleTest userTestl) {
 
-		
-
 		TestLocalService testLocalService = new TestLocalService();
 		Map<Integer, Integer> localToRealId = testLocalService.getIdMap();
 		int realId = localToRealId.get(userTestl.getTestId());
@@ -30,27 +27,25 @@ public class CheckUserTestImplementation implements CheckUserTest {
 		Test testTemp = testService.getItem(DB.getSessionFactory(), realId);
 
 		TestReport testReport = new TestReport();
-		
+
 		checkQuestionList(testReport, testTemp.getListQuestions(), userTestl.getListQuestions());
-		
-		
+
 		return testReport;
 	}
 
 	private void checkQuestionList(TestReport testReport, List<Question> questionListTest,
 			List<QuestionSimple> questionListUser) {
 		int sizeQuestionList = questionListTest.size();
-		int sizeQuestionListUser = questionListUser.size();
-
+		
 		int score = testReport.getScore();
 
 		for (int i = 0; i < sizeQuestionList; i++) {
-			
+
 			Item item = new Item();
 
 			if (checkAnswerList(questionListTest.get(i), questionListUser.get(i), item) == true)
 				score++;
-			
+
 			testReport.getTestItems().add(item);
 			testReport.setScore(score);
 		}
@@ -90,8 +85,6 @@ public class CheckUserTestImplementation implements CheckUserTest {
 		item.setMyAnswers(answerListUser);
 		item.setCorrectAnswers(correctAnswers);
 
-		
-		
 		if (numberOfCorrectAnswer == numberOfCorrectAnswersUser)
 			return true;
 
