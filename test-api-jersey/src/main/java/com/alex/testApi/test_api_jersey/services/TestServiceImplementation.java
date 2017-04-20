@@ -6,13 +6,13 @@ import com.alex.testApi.test_api_jersey.model.Test;
 import com.alex.testApi.test_api_jersey.database.*;
 import com.alex.testApi.test_api_jersey.model.*;
 
-public class TestService implements BasicService<Test> {
+public class TestServiceImplementation implements BasicService<Test> {
 
 	@Override
 	public Test getItem(SessionFactory factory, int id) {
 		
 		DAOOperations<Test> testOpearions = new TestDAO();
-		BasicService<Question> questionService = new QuestionService();
+		BasicService<Question> questionService = new QuestionServiceImplementation();
 		
 	
 		Test test = testOpearions.getARow(factory, id);
@@ -36,7 +36,7 @@ public class TestService implements BasicService<Test> {
 	public void deleteItem(SessionFactory factory, int id) {
 		DAOOperations<Test> testOpearions = new TestDAO();
 		
-		BasicService<Question> questionService = new QuestionService();
+		BasicService<Question> questionService = new QuestionServiceImplementation();
 		
 		Test test = testOpearions.getARow(factory, id);
 		List<Question> questionList = questionService.getSimilarItems(factory, test.getId());
@@ -63,7 +63,7 @@ public class TestService implements BasicService<Test> {
 		DAOOperations<Test> testOpearions = new TestDAO();
 
 		List<Question> listQuestion = item.getListQuestions();
-		BasicService<Question> questionService = new QuestionService();
+		BasicService<Question> questionService = new QuestionServiceImplementation();
 		
 		for(Question q:listQuestion){
 			questionService.createItem(factory, q);

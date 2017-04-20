@@ -14,7 +14,7 @@ import javax.ws.rs.core.UriInfo;
 import com.alex.testApi.test_api_jersey.database.DB;
 import com.alex.testApi.test_api_jersey.localmodel.TestLocal;
 import com.alex.testApi.test_api_jersey.services.BasicService;
-import com.alex.testApi.test_api_jersey.services.TestLocalService;
+import com.alex.testApi.test_api_jersey.services.TestLocalServiceImplementation;
 
 @Path("/testA")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,7 +26,7 @@ public class TestForAdmin {
 	{
 		if(DB.getSessionFactory()==null) DB.DBConnect();
 		
-		BasicService<TestLocal> testLocalService = new TestLocalService();
+		BasicService<TestLocal> testLocalService = new TestLocalServiceImplementation();
 		
 		return testLocalService.getAllItems(DB.getSessionFactory());
 		
@@ -38,7 +38,7 @@ public class TestForAdmin {
 	{
 		if(DB.getSessionFactory()==null) DB.DBConnect();
 		
-		BasicService<TestLocal> testLocalService = new TestLocalService();
+		BasicService<TestLocal> testLocalService = new TestLocalServiceImplementation();
 		System.out.println(id);
 		
 		return testLocalService.getItem(DB.getSessionFactory(), id);

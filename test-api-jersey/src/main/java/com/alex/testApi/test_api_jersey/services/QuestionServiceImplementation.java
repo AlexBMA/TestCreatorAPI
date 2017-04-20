@@ -10,7 +10,7 @@ import com.alex.testApi.test_api_jersey.model.Answer;
 import com.alex.testApi.test_api_jersey.model.Question;
 
 
-public class QuestionService implements BasicService<Question> {
+public class QuestionServiceImplementation implements BasicService<Question> {
 
 	@Override
 	public Question getItem(SessionFactory factory, int id) {
@@ -47,7 +47,7 @@ public class QuestionService implements BasicService<Question> {
 		Question item = questionOpearions.getARow(factory, id);
 		
 		List<Answer> listAnswer = item.getListAnswers();
-		BasicService<Answer>answerService = new AnswerService();
+		BasicService<Answer>answerService = new AnswerServiceImplementation();
 		
 		for(Answer a:listAnswer)
 		{
@@ -63,7 +63,7 @@ public class QuestionService implements BasicService<Question> {
 		DAOOperations<Question> questionOpearions = new QuestionDAO();
 		
 		List<Answer> listAnswer = item.getListAnswers();
-		BasicService<Answer>answerService = new AnswerService();
+		BasicService<Answer>answerService = new AnswerServiceImplementation();
 		
 		for(Answer a: listAnswer)
 		{

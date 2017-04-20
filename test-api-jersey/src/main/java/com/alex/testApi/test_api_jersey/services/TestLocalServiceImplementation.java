@@ -17,7 +17,7 @@ import com.alex.testApi.test_api_jersey.model.Answer;
 import com.alex.testApi.test_api_jersey.model.Question;
 import com.alex.testApi.test_api_jersey.model.Test;
 
-public class TestLocalService implements BasicService<TestLocal> {
+public class TestLocalServiceImplementation implements BasicService<TestLocal> {
 
 	
 	private static Map<Integer,Integer> localToRealId;
@@ -25,7 +25,7 @@ public class TestLocalService implements BasicService<TestLocal> {
 	@Override
 	public List<TestLocal> getAllItems(SessionFactory session) {
 		
-		BasicService<Test> testService = new TestService();
+		BasicService<Test> testService = new TestServiceImplementation();
 		
 		List<Test> allTest = testService.getAllItems(DB.getSessionFactory());
 
@@ -64,7 +64,7 @@ public class TestLocalService implements BasicService<TestLocal> {
 		
 		int realId = localToRealId.get(id);
 		
-		BasicService<Test> testService = new TestService();
+		BasicService<Test> testService = new TestServiceImplementation();
 		Test tempTest = testService.getItem(DB.getSessionFactory(), realId);
 		
 		TestLocal tempLocal= new TestLocal();
@@ -103,7 +103,7 @@ public class TestLocalService implements BasicService<TestLocal> {
 	public void getAllTestId(SessionFactory factory)
 	{
 		localToRealId = new HashMap<>();
-		BasicService<Test> testService = new TestService();
+		BasicService<Test> testService = new TestServiceImplementation();
 		List<Integer> testIds = testService.getIds(factory);
 		
 		int size = testIds.size();

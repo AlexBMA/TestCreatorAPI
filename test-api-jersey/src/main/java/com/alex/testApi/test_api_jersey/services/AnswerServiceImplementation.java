@@ -8,7 +8,7 @@ import com.alex.testApi.test_api_jersey.database.AnswerDAO;
 import com.alex.testApi.test_api_jersey.database.DAOOperations;
 import com.alex.testApi.test_api_jersey.model.Answer;
 
-public class AnswerService implements BasicService<Answer> {
+public class AnswerServiceImplementation implements BasicService<Answer> {
 
 	@Override
 	public Answer getItem(SessionFactory factory, int id) {

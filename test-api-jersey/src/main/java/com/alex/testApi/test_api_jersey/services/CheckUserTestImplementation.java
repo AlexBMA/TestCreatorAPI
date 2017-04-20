@@ -18,11 +18,11 @@ public class CheckUserTestImplementation implements CheckUserTest {
 	@Override
 	public TestReport checkUserTest(SimpleTest userTestl) {
 
-		TestLocalService testLocalService = new TestLocalService();
+		TestLocalServiceImplementation testLocalService = new TestLocalServiceImplementation();
 		Map<Integer, Integer> localToRealId = testLocalService.getIdMap();
 		int realId = localToRealId.get(userTestl.getTestId());
 
-		BasicService<Test> testService = new TestService();
+		BasicService<Test> testService = new TestServiceImplementation();
 
 		Test testTemp = testService.getItem(DB.getSessionFactory(), realId);
 

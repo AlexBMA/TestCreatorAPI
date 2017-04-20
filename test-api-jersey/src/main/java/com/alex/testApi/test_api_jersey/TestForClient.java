@@ -23,7 +23,7 @@ import com.alex.testApi.test_api_jersey.model.TestReport;
 import com.alex.testApi.test_api_jersey.services.BasicService;
 import com.alex.testApi.test_api_jersey.services.CheckUserTestImplementation;
 import com.alex.testApi.test_api_jersey.services.CheckUserTest;
-import com.alex.testApi.test_api_jersey.services.TestLocalService;
+import com.alex.testApi.test_api_jersey.services.TestLocalServiceImplementation;
 import com.alex.testApi.test_api_jersey.simplemodel.SimpleTest;
 
 @Path("/testC")
@@ -37,7 +37,7 @@ public class TestForClient {
 	{
 		if(DB.getSessionFactory()==null) DB.DBConnect();
 			
-		BasicService<TestLocal> testLocalService = new TestLocalService();
+		BasicService<TestLocal> testLocalService = new TestLocalServiceImplementation();
 		
 		return testLocalService.getAllItems(DB.getSessionFactory());
 		
@@ -48,7 +48,7 @@ public class TestForClient {
 	{
 		if(DB.getSessionFactory()==null) DB.DBConnect();
 		
-		BasicService<TestLocal> testLocalService = new TestLocalService();
+		BasicService<TestLocal> testLocalService = new TestLocalServiceImplementation();
 		
 		return testLocalService.getItem(DB.getSessionFactory(), id);
 	}
